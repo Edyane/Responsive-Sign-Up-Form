@@ -1,0 +1,38 @@
+<html>
+<head>
+   <title> Consulta ao Banco MySQL! </title>
+</head>
+
+<body>
+
+<?php
+    $username = "root";
+    $password = "";
+
+    $db = new mysqli('localhost', $username, $password, 'test');
+
+    if($db->connect_errno > 0){
+        die('Erro na comunicação com o banco [' . $db->connect_error . ']');
+    }
+
+    $sql = <<<SQL
+        SELECT *
+        FROM `pessoas`
+    SQL;
+
+    if(!$result = $db->query($sql)){
+        die('Erro executando a consulta ao banco de dados [' . $db->error . ']');
+    }
+
+    while ($row = $result->fetch_assoc()) {
+        echo "Nome: ".$row{'fname'}."<br>";
+        echo "E-mail: ".$row{'email'}."<br>";
+        echo "Senha: ".$row{'password'}."<br>";
+    }
+
+    $result->free();
+    $db->close();
+?>
+
+</body>
+</html>
