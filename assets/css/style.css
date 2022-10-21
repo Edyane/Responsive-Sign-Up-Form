@@ -133,7 +133,7 @@ label {
 
 .checkbox-container input:checked~.checkmark {
     background-color: var(--primary-blue);
-    border: 1px solid var(--primary-);
+    border: 1px solid var(--primary-blue);
 }
 
 .checkmark {
@@ -184,4 +184,18 @@ label {
 .signup-btn {
     background: #2c4893;
     cursor: pointer;
+}
+
+@media screen and (min-width: 900px) {
+    .split-screen{
+        flex-direction: row;
+        height: 100vh;
+    }
+
+    .left,
+    .right {
+        display: flex;
+        width: 50%;
+        height: auto;
+    }
 }
